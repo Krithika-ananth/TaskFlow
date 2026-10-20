@@ -1,0 +1,4 @@
+-- Additive migration for the task importance control used by the Task Flow UI.
+ALTER TABLE TASKS ADD (IMPORTANT_FLAG CHAR(1) DEFAULT 'N' NOT NULL);
+ALTER TABLE TASKS ADD CONSTRAINT CK_TASK_IMPORTANT_FLAG CHECK (IMPORTANT_FLAG IN ('Y','N'));
+COMMIT;

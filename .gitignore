@@ -1,0 +1,8 @@
+/target/
+/.local-tomcat/
+/com/
+/commons-io/
+/jakarta/
+/javax/
+/org/
+/build-local.log

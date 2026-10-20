@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>Task Flow</display-name>
+  <welcome-file-list><welcome-file>index.jsp</welcome-file></welcome-file-list>
+  <session-config><session-timeout>30</session-timeout><cookie-config><http-only>true</http-only><secure>false</secure></cookie-config></session-config>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.dayflow.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.dayflow.filter.AuthenticationFilter</filter-class>
+    <init-param>
+      <param-name>excludedPaths</param-name>
+      <param-value>/login,/register,/forgot-password,/reset-password,/index.jsp,/assets,/css,/js,/images,/legacy</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping><filter-name>AuthenticationFilter</filter-name><url-pattern>/*</url-pattern></filter-mapping>
+  <listener><listener-class>com.dayflow.listener.SessionListener</listener-class></listener>
+  <error-page><error-code>404</error-code><location>/error.jsp</location></error-page>
+  <error-page><error-code>500</error-code><location>/error.jsp</location></error-page>
+</web-app>

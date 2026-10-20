@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: taskflow
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: DAYFLOW_DB_URL
+        sync: false
+      - key: DAYFLOW_DB_USER
+        sync: false
+      - key: DAYFLOW_DB_PASSWORD
+        sync: false

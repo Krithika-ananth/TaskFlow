@@ -48,6 +48,16 @@ mvn clean package
 
 Deploy `target/DayFlow.war` to Tomcat's `webapps` directory and start Tomcat. Open `http://localhost:8080/DayFlow/`.
 
+## Public deployment on Render
+
+The repository includes a Dockerfile and Render Blueprint for a Tomcat 10.1 service. To deploy:
+
+1. Open [Render Blueprint setup](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FKrithika-ananth%2FTaskFlow) and connect the `TaskFlow` repository.
+2. In Render, enter `DAYFLOW_DB_URL`, `DAYFLOW_DB_USER`, and `DAYFLOW_DB_PASSWORD` for a publicly reachable Oracle database. Keep credentials in Render's environment settings; do not commit them.
+3. Apply the Blueprint and wait for its first deploy to finish. Render provides the public `https://taskflow-....onrender.com` URL.
+
+The Blueprint uses Render's free instance, which can spin down when idle. Its first request after a spin-down may take longer. Initialize the Oracle schema and any required migrations before testing signup or login.
+
 The landing page links to signup and login. Successful signup redirects to login. Successful login creates a session and opens the existing authenticated dashboard. Logout invalidates that session.
 
 ## Manual signup and login check

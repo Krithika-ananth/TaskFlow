@@ -1,0 +1,11 @@
+.git
+.gitignore
+.local-tomcat
+.vscode
+target
+build-local.log
+com
+commons-io
+jakarta
+javax
+org
